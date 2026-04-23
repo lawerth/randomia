@@ -1,6 +1,6 @@
 # Randomia
 
-Cryptographically secure random selection library for JavaScript/TypeScript. All operations use Node.js `crypto` module for unpredictable, tamper-proof randomness.
+Cryptographically secure random selection library for JavaScript/TypeScript.
 
 ## Features
 
@@ -26,10 +26,10 @@ npm install randomia
 ### Using Functional API
 
 ```typescript
-import { pick, shuffle, randomRange, probability } from 'randomia';
+import { pick, shuffle, randomRange, probability } from "randomia";
 
 // Pick a random element (cryptographically secure)
-const selected = pick(['apple', 'banana', 'orange']);
+const selected = pick(["apple", "banana", "orange"]);
 
 // Shuffle an array
 const shuffled = shuffle([1, 2, 3, 4, 5]);
@@ -39,17 +39,17 @@ const num = randomRange(1, 100);
 
 // Check if something happens (50% chance)
 if (probability(50)) {
-  console.log('Lucky!');
+  console.log("Lucky!");
 }
 ```
 
 ### Using Class-Based API
 
 ```typescript
-import Randomia from 'randomia';
+import Randomia from "randomia";
 
 // Pick a random element
-const selected = Randomia.pick(['apple', 'banana', 'orange']);
+const selected = Randomia.pick(["apple", "banana", "orange"]);
 
 // Shuffle an array
 const shuffled = Randomia.shuffle([1, 2, 3, 4, 5]);
@@ -96,7 +96,7 @@ pick([1, 2, 3, 4, 5]); // Returns one random element
 Pick multiple random elements with replacement.
 
 ```typescript
-pickMultiple(['a', 'b', 'c'], 5); // Returns 5 elements (may have duplicates)
+pickMultiple(["a", "b", "c"], 5); // Returns 5 elements (may have duplicates)
 ```
 
 #### `sampleWithoutReplacement<T>(array: T[], count: number): T[]`
@@ -127,9 +127,9 @@ Pick one element based on weights.
 
 ```typescript
 const items = [
-  { item: 'common', weight: 70 },
-  { item: 'rare', weight: 20 },
-  { item: 'legendary', weight: 10 }
+  { item: "common", weight: 70 },
+  { item: "rare", weight: 20 },
+  { item: "legendary", weight: 10 },
 ];
 
 weightedPick(items); // More likely to pick 'common'
@@ -141,8 +141,8 @@ Pick multiple elements with replacement based on weights.
 
 ```typescript
 const items = [
-  { item: 'heads', weight: 50 },
-  { item: 'tails', weight: 50 }
+  { item: "heads", weight: 50 },
+  { item: "tails", weight: 50 },
 ];
 
 weightedPickMultiple(items, 10); // Simulate 10 coin flips
@@ -154,9 +154,9 @@ Pick multiple unique elements without replacement based on weights.
 
 ```typescript
 const items = [
-  { item: 'item1', weight: 1 },
-  { item: 'item2', weight: 2 },
-  { item: 'item3', weight: 3 }
+  { item: "item1", weight: 1 },
+  { item: "item2", weight: 2 },
+  { item: "item3", weight: 3 },
 ];
 
 weightedSampleWithoutReplacement(items, 2); // Returns 2 unique items
@@ -170,7 +170,7 @@ Check if a random event occurs with the given probability (0-100).
 
 ```typescript
 if (probability(25)) {
-  console.log('25% chance occurred!');
+  console.log("25% chance occurred!");
 }
 
 // Simulate critical hit with 15% chance
@@ -195,7 +195,7 @@ pickObjectKey(obj); // Returns 'a', 'b', or 'c'
 Pick a random value from an object.
 
 ```typescript
-const obj = { name: 'John', age: 30, city: 'NYC' };
+const obj = { name: "John", age: 30, city: "NYC" };
 pickObjectValue(obj); // Returns 'John', 30, or 'NYC'
 ```
 
@@ -246,7 +246,7 @@ The `weight` value determines the relative probability of selection. Weights are
 ### Dice Roll Simulator
 
 ```typescript
-import { randomRange } from 'randomia';
+import { randomRange } from "randomia";
 
 function rollDice(sides = 6): number {
   return randomRange(1, sides + 1);
@@ -259,12 +259,12 @@ console.log(rollDice(20)); // 1-20
 ### Fair Lottery System
 
 ```typescript
-import { weightedPick } from 'randomia';
+import { weightedPick } from "randomia";
 
 const prizes = [
-  { item: { name: 'Consolation', value: 10 }, weight: 70 },
-  { item: { name: 'Silver', value: 100 }, weight: 25 },
-  { item: { name: 'Gold', value: 1000 }, weight: 5 }
+  { item: { name: "Consolation", value: 10 }, weight: 70 },
+  { item: { name: "Silver", value: 100 }, weight: 25 },
+  { item: { name: "Gold", value: 1000 }, weight: 5 },
 ];
 
 const prize = weightedPick(prizes);
@@ -274,20 +274,20 @@ console.log(`You won: ${prize.name} (${prize.value} points)`);
 ### Team Selection
 
 ```typescript
-import { sampleWithoutReplacement } from 'randomia';
+import { sampleWithoutReplacement } from "randomia";
 
-const players = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
+const players = ["Alice", "Bob", "Charlie", "Diana", "Eve"];
 const team1 = sampleWithoutReplacement(players, 2);
 const team2 = sampleWithoutReplacement(players, 2);
 
-console.log(`Team 1: ${team1.join(', ')}`);
-console.log(`Team 2: ${team2.join(', ')}`);
+console.log(`Team 1: ${team1.join(", ")}`);
+console.log(`Team 2: ${team2.join(", ")}`);
 ```
 
 ### Secure Token Generator
 
 ```typescript
-import Randomia from 'randomia';
+import Randomia from "randomia";
 
 function generateSessionToken(): string {
   return Randomia.randomHex(32); // 64-char hex token
@@ -299,10 +299,10 @@ function generateSecureID(prefix: string): string {
 }
 
 const sessionId = generateSessionToken();
-const userId = generateSecureID('user');
+const userId = generateSecureID("user");
 
 console.log(sessionId); // e.g., "a3f5d2e1b8c4f9a7e2d5c1b8a3f5d2e1..."
-console.log(userId);    // e.g., "user-f9a7e2d5c1b8a3f5d2e1a3f5d2e1b8c..."
+console.log(userId); // e.g., "user-f9a7e2d5c1b8a3f5d2e1a3f5d2e1b8c..."
 ```
 
 ## Error Handling
@@ -329,15 +329,6 @@ try {
 }
 ```
 
-## Performance Considerations
-
-- **Fisher-Yates Shuffle**: O(n) time complexity
-- **Random Pick**: O(1) time complexity
-- **Weighted Pick**: O(n) time complexity
-- **Sample Without Replacement**: O(n) time complexity
-
-> **Note**: All operations use Node.js `crypto` module which is slightly slower than `Math.random()` but provides cryptographically secure, unpredictable results. The performance difference is negligible for most applications.
-
 ## TypeScript Support
 
 All functions have full TypeScript support with proper type inference:
@@ -349,8 +340,8 @@ interface User {
 }
 
 const users: User[] = [
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' }
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
 ];
 
 const randomUser = pick(users); // Type: User
@@ -358,7 +349,7 @@ const selected = pickMultiple(users, 3); // Type: User[]
 
 const weighted = [
   { item: users[0], weight: 70 },
-  { item: users[1], weight: 30 }
+  { item: users[1], weight: 30 },
 ];
 
 const weightedUser = weightedPick(weighted); // Type: User
@@ -367,6 +358,7 @@ const weightedUser = weightedPick(weighted); // Type: User
 ## Security
 
 All random operations in this library use the Node.js `crypto` module:
+
 - `crypto.randomInt()` for integer generation
 - `crypto.randomBytes()` for byte/float generation
 
